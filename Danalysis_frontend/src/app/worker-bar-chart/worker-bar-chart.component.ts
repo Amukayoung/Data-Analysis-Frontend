@@ -36,74 +36,85 @@ export class WorkerBarChartComponent implements OnInit {
   }
 
   createChart() {
-    const data = this.apiActiveUserData.map(item => item.total_instances);
-
-    this.chart = new Chart("MyChart", {
-      type: 'bar',
-      data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [
-          {
-            label: "Active Users Last Year",
-            data: data,
-            backgroundColor: "rgba(255, 99, 132, 0.7)",
-          },
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true, // Allows you to set a fixed height
-        plugins: {
-          title: {
-            display: true,
-            text: "Active Users Last Year",
-            font: {
-              size: 18,
-              weight: 'bold',
-            }
-          },
-          legend: {
-            display: true,
-            labels: {
-              font: {
-                size: 14,
-              }
-            }
-          },
-        },
-        scales: {
-          x: {
-            grid: {
-              display: false // Hide X-axis grid lines for a cleaner look
-            },
-            ticks: {
-              font: {
-                size: 14
-              }
-            }
-          },
-          y: {
-            grid: {
-              color: 'rgba(0, 0, 0, 0.1)', // Add a light grey color to Y-axis grid lines
-            },
-            ticks: {
-              font: {
-                size: 14
+    const instancesData = this.apiActiveUserData.map(item => item.total_instances);
+  
+  
+    this.http.get('http://localhost:8000/inlinequestionresponses/lastyear').subscribe(
+      (response: any) => {
+        const feedbackData = response.data.MonthlyInlineQuestionFeedbackLastYear.map((item: any) => item.count);
+  
+        
+        const data = [instancesData, feedbackData];
+  
+        this.chart = new Chart("MyChart", {
+          type: 'bar',
+          data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [
+              {
+                label: "Active Users Last Year",
+                data: data[0],
+                backgroundColor: "rgba(255, 99, 132, 0.7)",
               },
-            }
+              {
+                label: "Number of Inline Question Response",
+                data: data[1],
+                backgroundColor: "rgba(54, 162, 235, 0.7)", 
+              },
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              title: {
+                display: true,
+                text: "Active Users and Responses Last Year",
+                font: {
+                  size: 18,
+                  weight: 'bold',
+                }
+              },
+              legend: {
+                display: true,
+                labels: {
+                  font: {
+                    size: 14,
+                  }
+                }
+              },
+            },
+            scales: {
+              x: {
+                grid: {
+                  display: false
+                },
+                ticks: {
+                  font: {
+                    size: 14
+                  }
+                }
+              },
+              y: {
+                grid: {
+                  color: 'rgba(0, 0, 0, 0.1)',
+                },
+                ticks: {
+                  font: {
+                    size: 14
+                  },
+                }
+              }
+            },
+            animation: {
+              duration: 3000,
+            },
           }
-        },
-        animation: {
-          duration: 3000, // Set animation duration (milliseconds)
-        },
-        // tooltips: {
-        //   mode: 'index',
-        //   intersect: false,
-        //   callbacks: {
-        //     label: (tooltipItem: any) => `${tooltipItem.value} instances`,
-        //   } 
-        // } as ChartTooltipOptions
+        });
+      },
+      (error) => {
+        console.error('Error fetching inline question feedback data:', error);
       }
-    });
+    );
   }
 }

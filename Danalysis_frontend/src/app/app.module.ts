@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { WorkerBarChartComponent } from './worker-bar-chart/worker-bar-chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutesPieChartComponent } from './routes-pie-chart/routes-pie-chart.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { QuestionsComponent } from './questions/questions.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     WorkerBarChartComponent,
-    RoutesPieChartComponent
+    RoutesPieChartComponent,
+    HomepageComponent,
+    QuestionsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
