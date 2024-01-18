@@ -1,1 +1,53 @@
-<p>questions works!</p>
+<div class="head-title">
+    <div class="left">
+      <h1>Questions</h1>
+      <ul class="breadcrumb">
+        <li>
+          <a href="http://localhost:4200/home">Dashboard</a>
+        </li>
+        <li><i class='bx bx-chevron-right' ></i></li>
+        <li>
+          <a class="active" href="http://localhost:4200/questions">Questions</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="table-data">
+    <div class="order">
+      <div class="head">
+        <h3></h3>
+        <i class='bx bx-filter' ></i>
+      </div>
+      <canvas  id="MyChart" >{{ chart }}</canvas>
+    </div>
+    <!-- <div class="todo">
+      <div class="head">
+        <h3></h3>
+        <i class='bx bx-plus' ></i>
+        <i class='bx bx-filter' ></i>
+      </div>
+    </div> -->
+    <div class="table-data">
+        <div class="order">
+          <div class="head">
+            <h3></h3>
+            <i class='bx bx-filter' ></i>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>N0:</th>
+                <th>Inline Questions Name</th>
+                <th>Number of Responses</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let question of topAnsweredQuestions, let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ question.name }}</td>
+                    <td>{{ question.feedback_count }}</td>
+                  </tr>
+            </tbody>
+          </table>
+        
+        </div>

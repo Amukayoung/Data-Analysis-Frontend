@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoutesPieChartComponent } from './routes-pie-chart/routes-pie-chart.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { WorkersComponent } from './workers/workers.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { QuestionsComponent } from './questions/questions.component';
     RoutesPieChartComponent,
     HomepageComponent,
     QuestionsComponent,
+    WorkersComponent,
   ],
   imports: [
     BrowserModule,
