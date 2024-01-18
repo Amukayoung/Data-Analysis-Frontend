@@ -11,9 +11,9 @@ This is a frontend application design in Angular. This application visualizes da
 
 ## Usage
 
-![Screen Shot](./images/homepage.png)
-![Screen Shot](./images/workers.png)
-![Screen Shot](./images/login.png)
-![Screen Shot](./images/inlinequestion.png)
-![Screen Shot](./images/signuppage.png)
-![Screen Shot](./images/questionspage.png)
+![Screen Shot](./Images/homepage.png)
+![Screen Shot](./Images/workers.png)
+![Screen Shot](./Images/login.png)
+![Screen Shot](./Images/inlinequestion.png)
+![Screen Shot](./Images/signuppage.png)
+![Screen Shot](./Images/questionspage.png)
