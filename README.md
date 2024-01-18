@@ -2,7 +2,7 @@
 
 ## Task
 
-This is frontend application design in Angular. This application visualises data from a backend application Danalysis App Ass Url:https://github.com/Amukayoung/Data-Analysis-Ass
+This is a frontend application design in Angular. This application visualizes data from a backend application Danalysis App Ass Url:https://github.com/Amukayoung/Data-Analysis-Ass
 
 ## Technology
 
