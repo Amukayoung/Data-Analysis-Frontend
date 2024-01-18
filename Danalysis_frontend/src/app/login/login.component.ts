@@ -19,7 +19,6 @@ export class LoginComponent {
       .subscribe((response: any) => {
         console.log('Signup Response:', response);
   
-        // Assuming the API returns user details upon successful signup
         if (response.token) {
           console.log('User Data:', response.user);
           this.handleAuthentication(response);
@@ -33,8 +32,6 @@ export class LoginComponent {
     this.http.post('http://localhost:8000/login', this.loginObj)
       .subscribe((response: any) => {
         console.log('Login Response:', response);
-  
-        // Assuming the API returns user details upon successful login
         if (response.token) {
           console.log('User Data:', response.user);
           this.handleAuthentication(response);
@@ -45,14 +42,11 @@ export class LoginComponent {
   }
 
   private handleAuthentication(response: any) {
-    // Extract user details from the response
     const userData = response.user;
-  
-    // Save user details and token to local storage
+
     localStorage.setItem('currentUser', JSON.stringify(userData));
     localStorage.setItem('token', response.token);
-  
-    // Redirect the user to the home page
-    this.router.navigate(['/home']);
+ 
+    this.router.navigate(['/workers']);
   }
 }
